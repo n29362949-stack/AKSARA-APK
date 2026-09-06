@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AKSARA-BOT Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="sidebar">
+
+    <div class="brand">
+      <div class="brand-icon">🤖</div>
+      <div>
+        <b>AKSARA-BOT</b>
+        <small>WhatsApp Bot</small>
+      </div>
+      <button class="close-btn" onclick="toggleSidebar()">×</button>
+    </div>
+
+    <nav>
+
+      <div class="nav-title">UTAMA</div>
+
+      <button class="nav-item active" onclick="showPage('dashboard')">
+        🏠 <span>Dashboard</span>
+      </button>
+
+      <button class="nav-item" onclick="showPage('profile')">
+        👤 <span>Profil</span>
+      </button>
+
+      <button class="nav-item" onclick="showPage('connect')">
+        🔗 <span>Tautkan Akun</span>
+      </button>
+
+      <button class="nav-item" onclick="showPage('issues')">
+        ⚠️ <span>Issues</span>
+      </button>
+
+      <div class="divider"></div>
+
+      <div class="nav-title">MANAJEMEN</div>
+
+      <button class="nav-item" onclick="showPage('group')">
+        👥 <span>Group</span>
+      </button>
+
+      <button class="nav-item" onclick="showPage('settings')">
+        ⚙️ <span>Pengaturan Bot</span>
+      </button>
+
+      <button class="nav-item" onclick="showPage('connect')">
+        📱 <span>Jadi Bot</span>
+      </button>
+
+      <div class="divider"></div>
+
+      <div class="nav-title">PREMIUM</div>
+
+      <button class="nav-item" onclick="showPage('price')">
+        💳 <span>Harga</span>
+      </button>
+
+      <button class="nav-item" onclick="showPage('history')">
+        🕘 <span>Riwayat</span>
+      </button>
+
+      <div class="divider"></div>
+
+      <div class="nav-title">INFORMASI</div>
+
+      <button class="nav-item" onclick="showPage('invite')">
+        👤➕ <span>Undang Bot</span>
+      </button>
+
+      <button class="nav-item" onclick="showPage('monitoring')">
+        📈 <span>Monitoring</span>
+      </button>
+
+      <button class="nav-item" onclick="showPage('docs')">
+        📖 <span>Dokumentasi</span>
+      </button>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+      <button onclick="toggleLanguage()">🌐 <span id="languageText">Indonesia</span></button>
+      <button onclick="toggleDark()">🌙 Gelap</button>
+      <button class="join">💬 Gabung Grup</button>
+      <button onclick="showPage('dashboard')">🏠 Beranda</button>
+      <button onclick="logout()">🚪 Keluar</button>
+    </div>
+
+  </aside>
+
+  <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <header class="topbar">
+      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+      <div class="top-title">
+        <b>AKSARA-BOT</b>
+        <span>Dashboard</span>
+      </div>
+
+      <button class="notification" onclick="notify('Tidak ada notifikasi baru 🔔')">
+        🔔
+      </button>
+    </header>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="page active-page">
+
+      <div class="hero">
+        <div>
+          <p class="eyebrow">SELAMAT DATANG</p>
+          <h1>AKSARA-BOT 🤖</h1>
+          <p>Kelola bot WhatsApp kamu dari satu dashboard.</p>
+        </div>
+
+        <div class="status-badge">
+          <span></span> ONLINE
+        </div>
+      </div>
+
+      <div class="stats">
+
+        <div class="stat-card">
+          <div class="stat-icon">🤖</div>
+          <div>
+            <small>Bot Status</small>
+            <strong id="botStatus">Online</strong>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">⏱️</div>
+          <div>
+            <small>Runtime</small>
+            <strong id="runtime">00:00:00</strong>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">⚡</div>
+          <div>
+            <small>Speed</small>
+            <strong id="speed">0 ms</strong>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">📦</div>
+          <div>
+            <small>Version</small>
+            <strong>1.0.0</strong>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">👑</div>
+          <div>
+            <small>Owner</small>
+            <strong>Icaa</strong>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="section-title">
+        <h2>⚡ Aksi Cepat</h2>
+      </div>
+
+      <div class="quick-grid">
+
+        <button onclick="showPage('connect')">
+          🔗
+          <b>Tautkan Bot</b>
+          <small>Pairing Code</small>
+        </button>
+
+        <button onclick="showPage('settings')">
+          ⚙️
+          <b>Pengaturan</b>
+          <small>Atur bot</small>
+        </button>
+
+        <button onclick="showPage('monitoring')">
+          📊
+          <b>Monitoring</b>
+          <small>Lihat aktivitas</small>
+        </button>
+
+        <button onclick="showPage('docs')">
+          📖
+          <b>Dokumentasi</b>
+          <small>Pelajari bot</small>
+        </button>
+
+      </div>
+
+      <div class="section-title">
+        <h2>📋 Menu Bot</h2>
+      </div>
+
+      <div class="menu-grid">
+
+        <button onclick="openMenu('general')">⚙️ General</button>
+        <button onclick="openMenu('fun')">🎲 Fun Menu</button>
+        <button onclick="openMenu('anime')">🌸 Anime Menu</button>
+        <button onclick="openMenu('game')">🎮 Game Menu</button>
+        <button onclick="openMenu('media')">🎬 Media Menu</button>
+        <button onclick="openMenu('download')">📥 Download Menu</button>
+        <button onclick="openMenu('group')">👥 Group Menu</button>
+        <button onclick="openMenu('owner')">👑 Owner Menu</button>
+
+      </div>
+
+    </section>
+
+    <!-- CONNECT / PAIRING -->
+    <section id="connect" class="page">
+
+      <div class="page-header">
+        <div class="page-icon">🔗</div>
+        <div>
+          <h1>Tautkan Bot</h1>
+          <p>Hubungkan akun WhatsApp ke AKSARA-BOT.</p>
+        </div>
+      </div>
+
+      <div class="card">
+
+        <h2>🤖 Konfigurasi Bot</h2>
+
+        <label>Nama Bot</label>
+        <input id="botName" type="text" placeholder="Contoh: AKSARA-BOT">
+
+        <label>Metode Tautkan Perangkat</label>
+
+        <select id="pairMethod">
+          <option value="pairing">Pairing Code</option>
+          <option value="qr">QR Code</option>
+        </select>
+
+        <label>Nomor WhatsApp</label>
+
+        <div class="phone-row">
+          <div class="country">🇮🇩 +62</div>
+          <input id="phoneNumber" type="tel" placeholder="81234567890">
+        </div>
+
+        <small class="hint">
+          Masukkan nomor tanpa tanda + dan tanpa spasi.
+        </small>
+
+        <button class="primary" onclick="requestPairing()">
+          🔗 Minta Pairing Code
+        </button>
+
+      </div>
+
+      <div id="pairingBox" class="pairing-box hidden">
+
+        <div class="pair-icon">🔐</div>
+
+        <h2>Pairing Code</h2>
+
+        <p>Gunakan kode ini pada proses penautan perangkat WhatsApp.</p>
+
+        <div class="pair-code" id="pairCode">
+          --------
+        </div>
+        <div id="pairingTimer" class="pairing-timer">
+  ⏱️ Kode berlaku: <b>01:00</b>
+</div>
+        <div class="pair-actions">
+          <button onclick="copyPairing()">📋 Salin</button>
+          <button onclick="requestPairing()">🔄 Buat Baru</button>
+        </div>
+
+        <div class="steps">
+          <b>Langkah berikutnya:</b>
+          <p>1. Buka WhatsApp</p>
+          <p>2. Masuk ke Perangkat Tertaut</p>
+          <p>3. Pilih Tautkan dengan nomor telepon</p>
+          <p>4. Masukkan pairing code</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- PROFILE -->
+    <section id="profile" class="page">
+
+      <div class="page-header">
+        <div class="page-icon">👤</div>
+        <div>
+          <h1>Profil</h1>
+          <p>Informasi pemilik bot.</p>
+        </div>
+      </div>
+
+      <div class="card profile-card">
+        <div class="avatar">I</div>
+        <h2>Icaa</h2>
+        <p>Owner AKSARA-BOT</p>
+
+        <button class="primary" onclick="notify('Profil berhasil diperbarui')">
+          ✏️ Edit Profil
+        </button>
+      </div>
+
+    </section>
+
+    <!-- GROUP -->
+    <section id="group" class="page">
+
+      <div class="page-header">
+        <div class="page-icon">👥</div>
+        <div>
+          <h1>Group</h1>
+          <p>Kelola fitur grup bot.</p>
+        </div>
+      </div>
+
+      <div class="settings-list">
+
+        <div>
+          <b>👋 Welcome</b>
+          <span>Pesan anggota baru</span>
+          <input type="checkbox" checked>
+        </div>
+
+        <div>
+          <b>🚫 Anti Link</b>
+          <span>Deteksi link grup</span>
+          <input type="checkbox">
+        </div>
+
+        <div>
+          <b>🛡️ Anti Spam</b>
+          <span>Perlindungan spam</span>
+          <input type="checkbox" checked>
+        </div>
+
+        <div>
+          <b>📢 Auto Tag</b>
+          <span>Tag anggota otomatis</span>
+          <input type="checkbox">
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="settings" class="page">
+
+      <div class="page-header">
+        <div class="page-icon">⚙️</div>
+        <div>
+          <h1>Pengaturan Bot</h1>
+          <p>Atur perilaku AKSARA-BOT.</p>
+        </div>
+      </div>
+
+      <div class="settings-list">
+
+        <div>
+          <b>Prefix</b>
+          <span>Karakter awal command</span>
+          <input class="small-input" value=".">
+        </div>
+
+        <div>
+          <b>Auto Read</b>
+          <span>Otomatis membaca pesan</span>
+          <input type="checkbox" checked>
+        </div>
+
+        <div>
+          <b>Auto Typing</b>
+          <span>Menampilkan status mengetik</span>
+          <input type="checkbox" checked>
+        </div>
+
+        <div>
+          <b>Public Mode</b>
+          <span>Bot dapat digunakan semua orang</span>
+          <input type="checkbox">
+        </div>
+
+      </div>
+
+      <button class="primary" onclick="notify('Pengaturan disimpan ✅')">
+        💾 Simpan Pengaturan
+      </button>
+
+    </section>
+
+    <!-- MONITORING -->
+    <section id="monitoring" class="page">
+
+  <div class="page-header">
+    <div class="page-icon">📊</div>
+    <div>
+      <h1>Monitor Bot</h1>
+      <p>Pantau kondisi AKSARA-BOT secara langsung.</p>
+    </div>
+  </div>
+
+  <!-- STATUS -->
+  <div class="monitor-hero">
+
+    <div class="monitor-status">
+      <div class="online-dot"></div>
+
+      <div>
+        <small>STATUS BOT</small>
+        <h2 id="monitorStatus">ONLINE</h2>
+        <p>Bot sedang berjalan dengan normal.</p>
+      </div>
+    </div>
+
+    <button class="refresh-monitor" onclick="refreshMonitor()">
+      🔄 Refresh
+    </button>
+
+  </div>
+
+  <!-- STATISTICS -->
+  <div class="monitor-grid">
+
+    <div class="monitor-stat">
+      <span>⏱️ Runtime</span>
+      <strong id="monitorRuntime">00:00:00</strong>
+      <small>Waktu aktif bot</small>
+    </div>
+
+    <div class="monitor-stat">
+      <span>⚡ Speed</span>
+      <strong id="monitorSpeed">0 ms</strong>
+      <small>Respons terakhir</small>
+    </div>
+
+    <div class="monitor-stat">
+      <span>💬 Pesan</span>
+      <strong id="monitorMessages">0</strong>
+      <small>Pesan diproses</small>
+    </div>
+
+    <div class="monitor-stat">
+      <span>⌨️ Command</span>
+      <strong id="monitorCommands">0</strong>
+      <small>Command digunakan</small>
+    </div>
+
+    <div class="monitor-stat">
+      <span>👥 User</span>
+      <strong id="monitorUsers">0</strong>
+      <small>User terhubung</small>
+    </div>
+
+    <div class="monitor-stat">
+      <span>🤖 Bot</span>
+      <strong id="monitorBots">1</strong>
+      <small>Bot aktif</small>
+    </div>
+
+  </div>
+
+  <!-- CONNECTION -->
+  <div class="card">
+
+    <div class="card-title-row">
+      <div>
+        <h2>🔗 Koneksi</h2>
+        <p>Status koneksi WhatsApp.</p>
+      </div>
+
+      <span class="connection-online">
+        ● Terhubung
+      </span>
+    </div>
+
+    <div class="connection-info">
+
+      <div>
+        <small>Platform</small>
+        <b>WhatsApp</b>
+      </div>
+
+      <div>
+        <small>Library</small>
+        <b>Baileys</b>
+      </div>
+
+      <div>
+        <small>Mode</small>
+        <b>Public</b>
+      </div>
+
+      <div>
+        <small>Versi</small>
+        <b>1.0.0</b>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ACTIVITY -->
+  <div class="card">
+
+    <div class="card-title-row">
+      <div>
+        <h2>📡 Aktivitas</h2>
+        <p>Aktivitas terbaru dashboard.</p>
+      </div>
+
+      <button class="clear-btn" onclick="clearActivity()">
+        Bersihkan
+      </button>
+    </div>
+
+    <div id="activityLog" class="activity-log">
+
+      <div class="activity">
+        <span>🟢</span>
+        <div>
+          <b>Bot online</b>
+          <small>AKSARA-BOT berhasil dijalankan</small>
+        </div>
+        <time>Baru saja</time>
+      </div>
+
+      <div class="activity">
+        <span>🔗</span>
+        <div>
+          <b>Dashboard aktif</b>
+          <small>Sistem monitoring siap digunakan</small>
+        </div>
+        <time>Baru saja</time>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+    <section id="history" class="page">
+
+      <div class="page-header">
+        <div class="page-icon">🕘</div>
+        <div>
+          <h1>Riwayat</h1>
+          <p>Aktivitas dashboard.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <p>🔗 Bot dashboard dibuka</p>
+        <p>⚙️ Pengaturan diperiksa</p>
+        <p>🤖 Status bot: Online</p>
+      </div>
+
+    </section>
+
+    <!-- DOCS -->
+    <section id="docs" class="page">
+
+      <div class="page-header">
+        <div class="page-icon">📖</div>
+        <div>
+          <h1>Dokumentasi</h1>
+          <p>Panduan penggunaan AKSARA-BOT.</p>
+        </div>
+      </div>
+
+      <div class="card">
+
+        <h2>Command Dasar</h2>
+
+        <div class="command">
+          <code>.menu</code>
+          <span>Menampilkan menu bot</span>
+        </div>
+
+        <div class="command">
+          <code>.ping</code>
+          <span>Mengecek kecepatan bot</span>
+        </div>
+
+        <div class="command">
+          <code>.owner</code>
+          <span>Menampilkan owner</span>
+        </div>
+
+        <div class="command">
+          <code>.runtime</code>
+          <span>Melihat runtime bot</span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- OTHER PAGES -->
+    <section id="issues" class="page">
+      <div class="page-header">
+        <div class="page-icon">⚠️</div>
+        <div>
+          <h1>Issues</h1>
+          <p>Masalah dan status sistem.</p>
+        </div>
+      </div>
+      <div class="card success">✅ Tidak ada masalah yang terdeteksi.</div>
+    </section>
+
+    <section id="price" class="page">
+
+  <div class="page-header">
+    <div class="page-icon">👑</div>
+    <div>
+      <h1>Premium Pengguna</h1>
+      <p>Paket premium untuk satu pengguna</p>
+    </div>
+  </div>
+
+  <div class="premium-intro">
+    <h2>Upgrade AKSARA-BOT</h2>
+    <p>Pilih paket yang sesuai dengan kebutuhan kamu.</p>
+  </div>
+
+  <div class="premium-grid">
+
+    <!-- 15 HARI -->
+    <div class="premium-card">
+      <span class="premium-label">HEMAT</span>
+      <h2>15 Hari</h2>
+      <div class="premium-price">Rp 10.000</div>
+      <div class="premium-limit">Limit Spesial: 8</div>
+
+      <ul>
+        <li>✓ Akses fitur premium</li>
+        <li>✓ Semua fitur bot terbuka</li>
+        <li>✓ Dukungan prioritas</li>
+      </ul>
+
+      <div class="premium-note">
+        Paket berlaku untuk satu pengguna.
+      </div>
+
+      <button class="premium-buy"
+              onclick="buyPremium('15 Hari','Rp 10.000')">
+        Beli Sekarang
+      </button>
+    </div>
+
+    <!-- 1 BULAN -->
+    <div class="premium-card popular">
+      <span class="popular-badge">PALING POPULER</span>
+      <h2>1 Bulan</h2>
+      <div class="premium-price">Rp 15.000</div>
+      <div class="premium-limit">Limit Spesial: 15</div>
+
+      <ul>
+        <li>✓ Akses fitur premium</li>
+        <li>✓ Semua fitur bot terbuka</li>
+        <li>✓ Dukungan prioritas 24/7</li>
+      </ul>
+
+      <div class="premium-note">
+        Paket berlaku untuk satu pengguna.
+      </div>
+
+      <button class="premium-buy"
+              onclick="buyPremium('1 Bulan','Rp 15.000')">
+        Beli Sekarang
+      </button>
+    </div>
+
+    <!-- 3 BULAN -->
+    <div class="premium-card">
+      <span class="premium-label">TERBAIK</span>
+      <h2>3 Bulan</h2>
+      <div class="premium-price">Rp 40.000</div>
+      <div class="premium-limit">Limit Spesial: 30</div>
+
+      <ul>
+        <li>✓ Akses fitur premium</li>
+        <li>✓ Semua fitur bot terbuka</li>
+        <li>✓ Dukungan prioritas 24/7</li>
+      </ul>
+
+      <div class="premium-note">
+        Paket berlaku untuk satu pengguna.
+      </div>
+
+      <button class="premium-buy"
+              onclick="buyPremium('3 Bulan','Rp 40.000')">
+        Beli Sekarang
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+    <section id="invite" class="page">
+      <div class="page-header">
+        <div class="page-icon">👤➕</div>
+        <div>
+          <h1>Undang Bot</h1>
+          <p>Bagikan dashboard kepada teman.</p>
+        </div>
+      </div>
+      <div class="card">
+        <button class="primary" onclick="notify('Link undangan disalin')">📋 Salin Link Undangan</button>
+      </div>
+    </section>
+
+  </main>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+
+let startTime = Date.now();
+
+function toggleSidebar() {
+  document.getElementById("sidebar").classList.toggle("open");
+  document.getElementById("overlay").classList.toggle("show");
+}
+
+function showPage(page) {
+
+  document.querySelectorAll(".page").forEach(p => {
+    p.classList.remove("active-page");
+  });
+
+  const target = document.getElementById(page);
+
+  if (target) {
+    target.classList.add("active-page");
+  }
+
+  document.querySelectorAll(".nav-item").forEach(item => {
+    item.classList.remove("active");
+  });
+
+  if (window.innerWidth < 800) {
+    toggleSidebar();
+  }
+}
+
+function notify(message) {
+
+  const toast = document.getElementById("toast");
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+}
+
+function toggleDark() {
+  document.body.classList.toggle("light");
+
+  const dark = !document.body.classList.contains("light");
+
+  localStorage.setItem("darkMode", dark);
+
+  notify(dark ? "Mode gelap aktif 🌙" : "Mode terang aktif ☀️");
+}
+
+function toggleLanguage() {
+
+  const text = document.getElementById("languageText");
+
+  if (text.textContent === "Indonesia") {
+    text.textContent = "English";
+    notify("Bahasa diubah ke English");
+  } else {
+    text.textContent = "Indonesia";
+    notify("Bahasa diubah ke Indonesia");
+  }
+}
+
+function logout() {
+  notify("Keluar dari dashboard");
+}
+
+function requestPairing() {
+
+  const number = document.getElementById("phoneNumber").value.trim();
+
+  if (!number) {
+    notify("Masukkan nomor WhatsApp terlebih dahulu ⚠️");
+    return;
+  }
+
+  if (!/^[0-9]+$/.test(number)) {
+    notify("Nomor hanya boleh berisi angka ⚠️");
+    return;
+  }
+
+  /*
+    DEMO UI:
+    Kode di bawah hanya simulasi tampilan.
+    Untuk pairing WhatsApp sungguhan,
+    hubungkan fungsi ini ke backend bot milikmu.
+  */
+
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+  let code = "";
+
+  for (let i = 0; i < 8; i++) {
+    code += chars[Math.floor(Math.random() * chars.length)];
+  }
+
+  document.getElementById("pairCode").textContent = code;
+  document.getElementById("pairingBox").classList.remove("hidden");
+
+  notify("Pairing code berhasil dibuat 🔐");
+}
+
+function copyPairing() {
+
+  const code = document.getElementById("pairCode").textContent;
+
+  if (code === "--------") return;
+
+  navigator.clipboard.writeText(code);
+
+  notify("Pairing code disalin 📋");
+}
+
+function openMenu(type) {
+
+  const menus = {
+    general: ".menu .help .ping .info .owner .runtime .speed",
+    fun: ".cekkhodam .cekpasangan .cekjodoh .ceknasib",
+    anime: ".anime .waifu .karakter",
+    game: ".tebakgambar .tebakkata .quiz .math",
+    group: ".tagall .hidetag .add .kick .promote .demote",
+    owner: ".addowner .delowner .addprem .restart"
+  };
+
+  notify("Menu " + type.toUpperCase() + " dibuka");
+}
+
+function updateRuntime() {
+
+  const seconds = Math.floor(
+    (Date.now() - startTime) / 1000
+  );
+
+  const h = String(Math.floor(seconds / 3600)).padStart(2, "0");
+  const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
+  const s = String(seconds % 60).padStart(2, "0");
+
+  document.getElementById("runtime").textContent =
+    `${h}:${m}:${s}`;
+
+}
+
+setInterval(updateRuntime, 1000);
+
+setInterval(() => {
+
+  const speed =
+    Math.floor(Math.random() * 40) + 10;
+
+  document.getElementById("speed").textContent =
+    speed + " ms";
+
+}, 3000);
+
+if (localStorage.getItem("darkMode") === "false") {
+  document.body.classList.add("light");
+}
+
+</script>
+<script src="script.js"></script>
+</body>
+</html>
