@@ -570,35 +570,48 @@ function showPage(page) {
   );
 
   const sections =
-    document.querySelectorAll(
-      "[data-section]"
-    );
+    document.querySelectorAll(".page");
 
   sections.forEach(section => {
 
-    section.style.display =
-      "none";
+    section.classList.toggle(
+      "active",
+      section.id === page
+    );
+
+  });
+
+  const menuItems =
+    document.querySelectorAll(
+      "[data-page], [data-menu]"
+    );
+
+  menuItems.forEach(item => {
+
+    const itemPage =
+      item.dataset.page ||
+      item.dataset.menu;
+
+    item.classList.toggle(
+      "active",
+      itemPage === page
+    );
 
   });
 
   const target =
-    document.querySelector(
-      `[data-section="${page}"]`
-    );
+    document.getElementById(page);
 
   if (target) {
 
-    target.style.display =
-      "block";
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
 
   }
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
 }
-
 
 // ======================================================
 // GROUP SETTINGS
