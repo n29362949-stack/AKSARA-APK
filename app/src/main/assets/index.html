@@ -9,400 +9,1472 @@
 
 <body>
 
-  <aside class="sidebar">
-    <div class="brand">
-      <div class="brand-icon">A</div>
-      <div>
-        <h1>AKSARA</h1>
-        <span>BOT DASHBOARD</span>
-      </div>
-    </div>
+  <!-- ==================================================
+       AUTH SCREEN
+       ================================================== -->
 
-    <nav class="menu">
-      <button class="menu-item active" data-page="home">
-        🏠 <span>Beranda</span>
-      </button>
+  <div id="authScreen" class="auth-screen">
 
-      <button class="menu-item" data-page="pair">
-        🔗 <span>Tautkan Bot</span>
-      </button>
+    <div class="auth-card">
 
-      <button class="menu-item" data-page="bot">
-        🤖 <span>Bot Saya</span>
-      </button>
-
-      <button class="menu-item" data-page="group">
-        👥 <span>Grup</span>
-      </button>
-
-      <button class="menu-item" data-page="features">
-        ✨ <span>Fitur</span>
-      </button>
-
-      <button class="menu-item" data-page="profile">
-        👤 <span>Profil</span>
-      </button>
-    </nav>
-
-    <div class="sidebar-bottom">
-      <div class="mini-status">
-        <span class="status-dot"></span>
-        <div>
-          <strong id="sidebarStatus">Memeriksa...</strong>
-          <small>AKSARA-BOT</small>
-        </div>
-      </div>
-    </div>
-  </aside>
-
-
-  <main class="main-content">
-
-    <!-- BERANDA -->
-    <section id="home" class="page active">
-      <div class="topbar">
-        <div>
-          <span class="eyebrow">AKSARA-BOT</span>
-          <h2>Dashboard</h2>
-          <p>Kelola bot kamu dengan sederhana.</p>
-        </div>
-
-        <button class="icon-button" onclick="toggleNotifications()" title="Notifikasi">
-          🔔
-        </button>
+      <div class="auth-logo">
+        A
       </div>
 
-      <div class="hero-card">
-        <div>
-          <span class="eyebrow">MONITOR BOT</span>
-          <h3 id="botStatusText">Memeriksa status...</h3>
-          <p id="botStatusDetail">Menghubungkan ke AKSARA-BOT.</p>
-        </div>
-
-        <div class="hero-status">
-          <span class="status-dot large"></span>
-          <span id="monitorStatus">CHECKING</span>
-        </div>
+      <div class="auth-brand">
+        <h1>AKSARA-BOT</h1>
+        <p>Dashboard Bot WhatsApp</p>
       </div>
 
-      <div class="stats-grid">
-        <div class="stat-card">
-          <span>⏱️</span>
-          <small>Runtime</small>
-          <strong id="runtime">--</strong>
+
+      <!-- LOGIN -->
+
+      <div id="loginForm" class="auth-form">
+
+        <div class="auth-heading">
+          <h2>Selamat datang 👋</h2>
+          <p>Masuk untuk mengelola AKSARA-BOT kamu.</p>
         </div>
 
-        <div class="stat-card">
-          <span>📶</span>
-          <small>Koneksi</small>
-          <strong id="connectionStatus">--</strong>
-        </div>
-
-        <div class="stat-card">
-          <span>👥</span>
-          <small>Grup</small>
-          <strong id="groupCount">--</strong>
-        </div>
-
-        <div class="stat-card">
-          <span>📨</span>
-          <small>Aktivitas</small>
-          <strong id="activityCount">--</strong>
-        </div>
-      </div>
-
-      <div class="section-card">
-        <div class="section-title">
-          <div>
-            <h3>Aktivitas Terbaru</h3>
-            <p>Informasi aktivitas bot.</p>
-          </div>
-
-          <button class="small-button" onclick="refreshDashboard()">↻ Refresh</button>
-        </div>
-
-        <div id="activityList" class="activity-list">
-          <div class="empty-state">
-            <span>📋</span>
-            <p>Belum ada aktivitas.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- TAUTKAN BOT -->
-    <section id="pair" class="page">
-      <div class="topbar">
-        <div>
-          <span class="eyebrow">KONEKSI</span>
-          <h2>Tautkan Bot</h2>
-          <p>Hubungkan WhatsApp kamu dengan AKSARA-BOT.</p>
-        </div>
-      </div>
-
-      <div class="section-card">
         <div class="form-group">
-          <label for="phoneNumber">Nomor WhatsApp</label>
+          <label for="loginEmail">Email</label>
           <input
-            id="phoneNumber"
-            type="tel"
-            inputmode="numeric"
-            placeholder="628xxxxxxxxxx"
-            autocomplete="off"
+            id="loginEmail"
+            type="email"
+            placeholder="nama@email.com"
+            autocomplete="email"
           >
-          <small>Gunakan kode negara tanpa tanda +.</small>
         </div>
 
         <div class="form-group">
-          <label for="pairMethod">Metode</label>
-          <select id="pairMethod">
-            <option value="pairing">Pairing Code</option>
-          </select>
+          <label for="loginPassword">Password</label>
+          <input
+            id="loginPassword"
+            type="password"
+            placeholder="Masukkan password"
+            autocomplete="current-password"
+          >
         </div>
 
-        <button class="primary-button" onclick="requestPairing()">
-          🔗 Minta Kode Pairing
+        <button
+          class="primary-button auth-button"
+          onclick="loginAccount()"
+        >
+          Masuk
         </button>
 
-        <div id="pairingBox" class="pairing-box hidden">
-          <span>KODE PAIRING</span>
-          <strong id="pairCode">--------</strong>
-          <button class="small-button" onclick="copyPairing()">Salin Kode</button>
-          <p id="pairingTimer">Kode tersedia selama 60 detik.</p>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- BOT SAYA -->
-    <section id="bot" class="page">
-      <div class="topbar">
-        <div>
-          <span class="eyebrow">PENGELOLAAN</span>
-          <h2>Bot Saya</h2>
-          <p>Atur identitas dan perilaku bot.</p>
-        </div>
-      </div>
-
-      <div class="settings-grid">
-
-        <div class="section-card">
-          <h3>Identitas Bot</h3>
-
-          <div class="form-group">
-            <label for="botName">Nama Bot</label>
-            <input id="botName" type="text" placeholder="AKSARA-BOT">
-          </div>
-
-          <div class="form-group">
-            <label for="botBio">Bio</label>
-            <textarea id="botBio" rows="4" placeholder="Bot WhatsApp kamu..."></textarea>
-          </div>
-
-          <button class="primary-button" onclick="saveSettings()">
-            💾 Simpan
+        <p class="auth-switch">
+          Belum punya akun?
+          <button
+            class="text-button"
+            onclick="showRegister()"
+          >
+            Daftar sekarang
           </button>
-        </div>
-
-        <div class="section-card">
-          <h3>Pengaturan Dasar</h3>
-
-          <div class="form-group">
-            <label for="prefix">Prefix</label>
-            <input id="prefix" type="text" value=".">
-          </div>
-
-          <div class="setting-row">
-            <div>
-              <strong>Mode Public</strong>
-              <small>Bot dapat digunakan pengguna.</small>
-            </div>
-            <input class="toggle" id="publicMode" type="checkbox" checked>
-          </div>
-
-          <div class="setting-row">
-            <div>
-              <strong>Notifikasi</strong>
-              <small>Tampilkan pemberitahuan dashboard.</small>
-            </div>
-            <input class="toggle" id="notifications" type="checkbox" checked>
-          </div>
-        </div>
+        </p>
 
       </div>
-    </section>
 
 
-    <!-- GRUP -->
-    <section id="group" class="page">
-      <div class="topbar">
-        <div>
-          <span class="eyebrow">MANAJEMEN</span>
-          <h2>Grup</h2>
-          <p>Pengaturan grup AKSARA-BOT.</p>
-        </div>
-      </div>
+      <!-- REGISTER -->
 
-      <div class="settings-grid">
+      <div id="registerForm" class="auth-form hidden">
 
-        <div class="section-card">
-          <h3>Pengaturan Grup</h3>
-
-          <label class="setting-row group-setting">
-            <div>
-              <strong>Welcome</strong>
-              <small>Pesan saat anggota bergabung.</small>
-            </div>
-            <input type="checkbox" checked>
-          </label>
-
-          <label class="setting-row group-setting">
-            <div>
-              <strong>Goodbye</strong>
-              <small>Pesan saat anggota keluar.</small>
-            </div>
-            <input type="checkbox">
-          </label>
-
-          <label class="setting-row group-setting">
-            <div>
-              <strong>Anti Link</strong>
-              <small>Mengelola pesan berisi link.</small>
-            </div>
-            <input type="checkbox">
-          </label>
-
-          <label class="setting-row group-setting">
-            <div>
-              <strong>Tag All</strong>
-              <small>Mengaktifkan fitur tag anggota.</small>
-            </div>
-            <input type="checkbox" checked>
-          </label>
-
-          <button class="primary-button" onclick="setupGroupSettings()">
-            💾 Simpan Pengaturan
-          </button>
+        <div class="auth-heading">
+          <h2>Buat akun ✨</h2>
+          <p>Daftar untuk mulai menggunakan dashboard.</p>
         </div>
 
-        <div class="section-card">
-          <h3>Info Grup</h3>
-
-          <div class="info-row">
-            <span>Grup aktif</span>
-            <strong id="groupInfoCount">--</strong>
-          </div>
-
-          <div class="info-row">
-            <span>Status</span>
-            <strong id="groupInfoStatus">--</strong>
-          </div>
+        <div class="form-group">
+          <label for="registerName">Nama</label>
+          <input
+            id="registerName"
+            type="text"
+            placeholder="Nama kamu"
+            autocomplete="name"
+          >
         </div>
 
-      </div>
-    </section>
-
-
-    <!-- FITUR -->
-    <section id="features" class="page">
-      <div class="topbar">
-        <div>
-          <span class="eyebrow">AKSARA-BOT</span>
-          <h2>Fitur</h2>
-          <p>Fitur bot dikelompokkan agar tetap rapi.</p>
-        </div>
-      </div>
-
-      <div class="feature-grid">
-
-        <div class="feature-card">
-          <span>⚡</span>
-          <h3>General</h3>
-          <p>Menu dasar dan informasi bot.</p>
+        <div class="form-group">
+          <label for="registerEmail">Email</label>
+          <input
+            id="registerEmail"
+            type="email"
+            placeholder="nama@email.com"
+            autocomplete="email"
+          >
         </div>
 
-        <div class="feature-card">
-          <span>🎮</span>
-          <h3>Game</h3>
-          <p>Berbagai permainan interaktif.</p>
+        <div class="form-group">
+          <label for="registerPassword">Password</label>
+          <input
+            id="registerPassword"
+            type="password"
+            placeholder="Buat password"
+            autocomplete="new-password"
+          >
         </div>
 
-        <div class="feature-card">
-          <span>🎭</span>
-          <h3>Fun</h3>
-          <p>Fitur hiburan untuk pengguna.</p>
+        <div class="form-group">
+          <label for="registerConfirm">Konfirmasi Password</label>
+          <input
+            id="registerConfirm"
+            type="password"
+            placeholder="Ulangi password"
+            autocomplete="new-password"
+          >
         </div>
 
-        <div class="feature-card">
-          <span>🌸</span>
-          <h3>Anime</h3>
-          <p>Fitur dan pencarian bertema anime.</p>
-        </div>
-
-        <div class="feature-card">
-          <span>🎬</span>
-          <h3>Media</h3>
-          <p>Pengolahan media dan sticker.</p>
-        </div>
-
-        <div class="feature-card">
-          <span>⬇️</span>
-          <h3>Download</h3>
-          <p>Fitur download yang tersedia di bot.</p>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- PROFIL -->
-    <section id="profile" class="page">
-      <div class="topbar">
-        <div>
-          <span class="eyebrow">AKUN</span>
-          <h2>Profil</h2>
-          <p>Informasi akun dashboard kamu.</p>
-        </div>
-      </div>
-
-      <div class="section-card profile-card">
-        <div class="profile-avatar">A</div>
-
-        <div class="profile-info">
-          <h3 id="profileName">Pengguna AKSARA</h3>
-          <p id="profileEmail">Akun dashboard</p>
-        </div>
-
-        <button class="primary-button" onclick="editProfile()">
-          ✏️ Edit Profil
+        <button
+          class="primary-button auth-button"
+          onclick="registerAccount()"
+        >
+          Buat Akun
         </button>
+
+        <p class="auth-switch">
+          Sudah punya akun?
+          <button
+            class="text-button"
+            onclick="showLogin()"
+          >
+            Masuk
+          </button>
+        </p>
+
       </div>
 
-      <div class="section-card">
-        <div class="info-row">
-          <span>Status Akun</span>
-          <strong>Aktif</strong>
+    </div>
+
+  </div>
+
+
+  <!-- ==================================================
+       APP
+       ================================================== -->
+
+  <div id="appShell" class="app-shell hidden">
+
+
+    <!-- MOBILE OVERLAY -->
+
+    <div
+      id="menuOverlay"
+      class="menu-overlay"
+      onclick="closeMobileMenu()"
+    ></div>
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+      <div class="sidebar-header">
+
+        <div class="brand">
+
+          <div class="brand-icon">
+            A
+          </div>
+
+          <div>
+            <h1>AKSARA</h1>
+            <span>BOT DASHBOARD</span>
+          </div>
+
         </div>
 
-        <div class="info-row">
-          <span>Bot Terhubung</span>
-          <strong id="profileBotStatus">--</strong>
-        </div>
+        <button
+          class="mobile-close"
+          onclick="closeMobileMenu()"
+          aria-label="Tutup menu"
+        >
+          ×
+        </button>
 
-        <div class="info-row">
-          <span>Paket</span>
-          <strong>Free</strong>
-        </div>
       </div>
-    </section>
 
 
-    <!-- NOTIFICATION -->
-    <div id="notification" class="notification hidden"></div>
+      <nav class="menu">
 
-  </main>
+        <div class="menu-label">
+          UTAMA
+        </div>
+
+        <button
+          class="menu-item active"
+          data-page="home"
+          onclick="closeMobileMenu()"
+        >
+          <span class="menu-icon">🏠</span>
+          <span>Beranda</span>
+        </button>
+
+        <button
+          class="menu-item"
+          data-page="pair"
+          onclick="closeMobileMenu()"
+        >
+          <span class="menu-icon">🔗</span>
+          <span>Tautkan Bot</span>
+        </button>
+
+        <button
+          class="menu-item"
+          data-page="bot"
+          onclick="closeMobileMenu()"
+        >
+          <span class="menu-icon">🤖</span>
+          <span>Bot Saya</span>
+        </button>
+
+
+        <div class="menu-label menu-label-space">
+          PENGELOLAAN
+        </div>
+
+        <button
+          class="menu-item"
+          data-page="group"
+          onclick="closeMobileMenu()"
+        >
+          <span class="menu-icon">👥</span>
+          <span>Grup</span>
+        </button>
+
+        <button
+          class="menu-item"
+          data-page="features"
+          onclick="closeMobileMenu()"
+        >
+          <span class="menu-icon">✨</span>
+          <span>Fitur</span>
+        </button>
+
+
+        <div class="menu-label menu-label-space">
+          AKUN
+        </div>
+
+        <button
+          class="menu-item"
+          data-page="profile"
+          onclick="closeMobileMenu()"
+        >
+          <span class="menu-icon">👤</span>
+          <span>Profil</span>
+        </button>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <div class="mini-status">
+
+          <span class="status-dot"></span>
+
+          <div>
+            <strong id="sidebarStatus">
+              Memeriksa...
+            </strong>
+
+            <small>
+              AKSARA-BOT
+            </small>
+          </div>
+
+        </div>
+
+
+        <button
+          class="logout-button"
+          onclick="logoutAccount()"
+        >
+          🚪 Keluar
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+
+      <!-- MOBILE TOPBAR -->
+
+      <div class="mobile-topbar">
+
+        <div class="mobile-brand">
+
+          <div class="brand-icon">
+            A
+          </div>
+
+          <div>
+            <strong>AKSARA-BOT</strong>
+            <small id="mobileUserName">
+              Dashboard
+            </small>
+          </div>
+
+        </div>
+
+        <button
+          class="menu-button"
+          onclick="openMobileMenu()"
+          aria-label="Buka menu"
+        >
+          ☰
+        </button>
+
+      </div>
+
+
+      <!-- ==================================================
+           BERANDA
+           ================================================== -->
+
+      <section id="home" class="page active">
+
+        <div class="topbar">
+
+          <div>
+
+            <span class="eyebrow">
+              AKSARA-BOT
+            </span>
+
+            <h2>
+              Dashboard
+            </h2>
+
+            <p>
+              Kelola bot kamu dengan sederhana.
+            </p>
+
+          </div>
+
+          <button
+            class="icon-button"
+            onclick="toggleNotifications()"
+            title="Notifikasi"
+          >
+            🔔
+          </button>
+
+        </div>
+
+
+        <div class="hero-card">
+
+          <div>
+
+            <span class="eyebrow">
+              MONITOR BOT
+            </span>
+
+            <h3 id="botStatusText">
+              Memeriksa status...
+            </h3>
+
+            <p id="botStatusDetail">
+              Menghubungkan ke AKSARA-BOT.
+            </p>
+
+          </div>
+
+          <div class="hero-status">
+
+            <span class="status-dot large"></span>
+
+            <span id="monitorStatus">
+              CHECKING
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+            <span>⏱️</span>
+            <small>Runtime</small>
+            <strong id="runtime">--</strong>
+          </div>
+
+          <div class="stat-card">
+            <span>📶</span>
+            <small>Koneksi</small>
+            <strong id="connectionStatus">--</strong>
+          </div>
+
+          <div class="stat-card">
+            <span>👥</span>
+            <small>Grup</small>
+            <strong id="groupCount">--</strong>
+          </div>
+
+          <div class="stat-card">
+            <span>📨</span>
+            <small>Aktivitas</small>
+            <strong id="activityCount">--</strong>
+          </div>
+
+        </div>
+
+
+        <div class="section-card">
+
+          <div class="section-title">
+
+            <div>
+              <h3>
+                Aktivitas Terbaru
+              </h3>
+
+              <p>
+                Informasi aktivitas bot.
+              </p>
+            </div>
+
+            <button
+              class="small-button"
+              onclick="refreshDashboard()"
+            >
+              ↻ Refresh
+            </button>
+
+          </div>
+
+          <div
+            id="activityList"
+            class="activity-list"
+          >
+
+            <div class="empty-state">
+
+              <span>📋</span>
+
+              <p>
+                Belum ada aktivitas.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ==================================================
+           TAUTKAN BOT
+           ================================================== -->
+
+      <section id="pair" class="page">
+
+        <div class="topbar">
+
+          <div>
+
+            <span class="eyebrow">
+              KONEKSI
+            </span>
+
+            <h2>
+              Tautkan Bot
+            </h2>
+
+            <p>
+              Hubungkan WhatsApp kamu dengan AKSARA-BOT.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="section-card">
+
+          <div class="form-group">
+
+            <label for="phoneNumber">
+              Nomor WhatsApp
+            </label>
+
+            <input
+              id="phoneNumber"
+              type="tel"
+              inputmode="numeric"
+              placeholder="628xxxxxxxxxx"
+              autocomplete="off"
+            >
+
+            <small>
+              Gunakan kode negara tanpa tanda +.
+            </small>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="pairMethod">
+              Metode
+            </label>
+
+            <select id="pairMethod">
+
+              <option value="pairing">
+                Pairing Code
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <button
+            class="primary-button"
+            onclick="requestPairing()"
+          >
+            🔗 Minta Kode Pairing
+          </button>
+
+
+          <div
+            id="pairingBox"
+            class="pairing-box hidden"
+          >
+
+            <span>
+              KODE PAIRING
+            </span>
+
+            <strong id="pairCode">
+              --------
+            </strong>
+
+            <button
+              class="small-button"
+              onclick="copyPairing()"
+            >
+              Salin Kode
+            </button>
+
+            <p id="pairingTimer">
+              Kode tersedia selama 60 detik.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ==================================================
+           BOT SAYA
+           ================================================== -->
+
+      <section id="bot" class="page">
+
+        <div class="topbar">
+
+          <div>
+
+            <span class="eyebrow">
+              PENGELOLAAN
+            </span>
+
+            <h2>
+              Bot Saya
+            </h2>
+
+            <p>
+              Atur identitas dan perilaku bot.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="settings-grid">
+
+          <div class="section-card">
+
+            <h3>
+              Identitas Bot
+            </h3>
+
+            <div class="form-group">
+
+              <label for="botName">
+                Nama Bot
+              </label>
+
+              <input
+                id="botName"
+                type="text"
+                placeholder="AKSARA-BOT"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="botBio">
+                Bio
+              </label>
+
+              <textarea
+                id="botBio"
+                rows="4"
+                placeholder="Bot WhatsApp kamu..."
+              ></textarea>
+
+            </div>
+
+
+            <button
+              class="primary-button"
+              onclick="saveSettings()"
+            >
+              💾 Simpan
+            </button>
+
+          </div>
+
+
+          <div class="section-card">
+
+            <h3>
+              Pengaturan Dasar
+            </h3>
+
+            <div class="form-group">
+
+              <label for="prefix">
+                Prefix
+              </label>
+
+              <input
+                id="prefix"
+                type="text"
+                value="."
+              >
+
+            </div>
+
+
+            <div class="setting-row">
+
+              <div>
+                <strong>
+                  Mode Public
+                </strong>
+
+                <small>
+                  Bot dapat digunakan pengguna.
+                </small>
+              </div>
+
+              <input
+                class="toggle"
+                id="publicMode"
+                type="checkbox"
+                checked
+              >
+
+            </div>
+
+
+            <div class="setting-row">
+
+              <div>
+                <strong>
+                  Notifikasi
+                </strong>
+
+                <small>
+                  Tampilkan pemberitahuan dashboard.
+                </small>
+              </div>
+
+              <input
+                class="toggle"
+                id="notifications"
+                type="checkbox"
+                checked
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ==================================================
+           GRUP
+           ================================================== -->
+
+      <section id="group" class="page">
+
+        <div class="topbar">
+
+          <div>
+
+            <span class="eyebrow">
+              MANAJEMEN
+            </span>
+
+            <h2>
+              Grup
+            </h2>
+
+            <p>
+              Pengaturan grup AKSARA-BOT.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="settings-grid">
+
+          <div class="section-card">
+
+            <h3>
+              Pengaturan Grup
+            </h3>
+
+
+            <label class="setting-row group-setting">
+
+              <div>
+                <strong>Welcome</strong>
+                <small>
+                  Pesan saat anggota bergabung.
+                </small>
+              </div>
+
+              <input
+                type="checkbox"
+                checked
+              >
+
+            </label>
+
+
+            <label class="setting-row group-setting">
+
+              <div>
+                <strong>Goodbye</strong>
+                <small>
+                  Pesan saat anggota keluar.
+                </small>
+              </div>
+
+              <input
+                type="checkbox"
+              >
+
+            </label>
+
+
+            <label class="setting-row group-setting">
+
+              <div>
+                <strong>Anti Link</strong>
+                <small>
+                  Mengelola pesan berisi link.
+                </small>
+              </div>
+
+              <input
+                type="checkbox"
+              >
+
+            </label>
+
+
+            <label class="setting-row group-setting">
+
+              <div>
+                <strong>Tag All</strong>
+                <small>
+                  Mengaktifkan fitur tag anggota.
+                </small>
+              </div>
+
+              <input
+                type="checkbox"
+                checked
+              >
+
+            </label>
+
+
+            <button
+              class="primary-button"
+              onclick="setupGroupSettings()"
+            >
+              💾 Simpan Pengaturan
+            </button>
+
+          </div>
+
+
+          <div class="section-card">
+
+            <h3>
+              Info Grup
+            </h3>
+
+            <div class="info-row">
+
+              <span>
+                Grup aktif
+              </span>
+
+              <strong id="groupInfoCount">
+                --
+              </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+              <span>
+                Status
+              </span>
+
+              <strong id="groupInfoStatus">
+                --
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ==================================================
+           FITUR
+           ================================================== -->
+
+      <section id="features" class="page">
+
+        <div class="topbar">
+
+          <div>
+
+            <span class="eyebrow">
+              AKSARA-BOT
+            </span>
+
+            <h2>
+              Fitur
+            </h2>
+
+            <p>
+              Fitur bot dikelompokkan agar tetap rapi.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+          <div class="feature-card">
+            <span>⚡</span>
+            <h3>General</h3>
+            <p>
+              Menu dasar dan informasi bot.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <span>🎮</span>
+            <h3>Game</h3>
+            <p>
+              Berbagai permainan interaktif.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <span>🎭</span>
+            <h3>Fun</h3>
+            <p>
+              Fitur hiburan untuk pengguna.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <span>🌸</span>
+            <h3>Anime</h3>
+            <p>
+              Fitur dan pencarian bertema anime.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <span>🎬</span>
+            <h3>Media</h3>
+            <p>
+              Pengolahan media dan sticker.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <span>⬇️</span>
+            <h3>Download</h3>
+            <p>
+              Fitur download yang tersedia di bot.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ==================================================
+           PROFIL
+           ================================================== -->
+
+      <section id="profile" class="page">
+
+        <div class="topbar">
+
+          <div>
+
+            <span class="eyebrow">
+              AKUN
+            </span>
+
+            <h2>
+              Profil
+            </h2>
+
+            <p>
+              Informasi akun dashboard kamu.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="section-card profile-card">
+
+          <div class="profile-avatar">
+            A
+          </div>
+
+          <div class="profile-info">
+
+            <h3 id="profileName">
+              Pengguna AKSARA
+            </h3>
+
+            <p id="profileEmail">
+              Akun dashboard
+            </p>
+
+          </div>
+
+
+          <button
+            class="primary-button"
+            onclick="editProfile()"
+          >
+            ✏️ Edit Profil
+          </button>
+
+        </div>
+
+
+        <div class="section-card">
+
+          <div class="info-row">
+
+            <span>
+              Status Akun
+            </span>
+
+            <strong>
+              Aktif
+            </strong>
+
+          </div>
+
+
+          <div class="info-row">
+
+            <span>
+              Bot Terhubung
+            </span>
+
+            <strong id="profileBotStatus">
+              --
+            </strong>
+
+          </div>
+
+
+          <div class="info-row">
+
+            <span>
+              Paket
+            </span>
+
+            <strong>
+              Free
+            </strong>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- NOTIFICATION -->
+
+      <div
+        id="notification"
+        class="notification hidden"
+      ></div>
+
+    </main>
+
+  </div>
+
+
+  <!-- ==================================================
+       AUTH + MOBILE MENU
+       ================================================== -->
+
+  <script>
+
+    /* ==============================
+       AUTH
+       ============================== */
+
+    function getAccount() {
+      try {
+        return JSON.parse(
+          localStorage.getItem("aksara_account") || "null"
+        );
+      } catch {
+        return null;
+      }
+    }
+
+
+    function isLoggedIn() {
+      return localStorage.getItem(
+        "aksara_logged_in"
+      ) === "true";
+    }
+
+
+    function showLogin() {
+
+      document
+        .getElementById("loginForm")
+        .classList.remove("hidden");
+
+      document
+        .getElementById("registerForm")
+        .classList.add("hidden");
+
+    }
+
+
+    function showRegister() {
+
+      document
+        .getElementById("loginForm")
+        .classList.add("hidden");
+
+      document
+        .getElementById("registerForm")
+        .classList.remove("hidden");
+
+    }
+
+
+    function registerAccount() {
+
+      const name =
+        document
+          .getElementById("registerName")
+          .value
+          .trim();
+
+      const email =
+        document
+          .getElementById("registerEmail")
+          .value
+          .trim()
+          .toLowerCase();
+
+      const password =
+        document
+          .getElementById("registerPassword")
+          .value;
+
+      const confirm =
+        document
+          .getElementById("registerConfirm")
+          .value;
+
+
+      if (!name || !email || !password || !confirm) {
+
+        showAuthMessage(
+          "Lengkapi semua data terlebih dahulu."
+        );
+
+        return;
+      }
+
+
+      if (!email.includes("@")) {
+
+        showAuthMessage(
+          "Masukkan email yang valid."
+        );
+
+        return;
+      }
+
+
+      if (password.length < 6) {
+
+        showAuthMessage(
+          "Password minimal 6 karakter."
+        );
+
+        return;
+      }
+
+
+      if (password !== confirm) {
+
+        showAuthMessage(
+          "Konfirmasi password tidak cocok."
+        );
+
+        return;
+      }
+
+
+      const account = {
+        name,
+        email,
+        password
+      };
+
+
+      localStorage.setItem(
+        "aksara_account",
+        JSON.stringify(account)
+      );
+
+
+      localStorage.setItem(
+        "aksara_logged_in",
+        "true"
+      );
+
+
+      openDashboard();
+
+    }
+
+
+    function loginAccount() {
+
+      const email =
+        document
+          .getElementById("loginEmail")
+          .value
+          .trim()
+          .toLowerCase();
+
+      const password =
+        document
+          .getElementById("loginPassword")
+          .value;
+
+
+      const account = getAccount();
+
+
+      if (!account) {
+
+        showAuthMessage(
+          "Belum ada akun. Silakan daftar terlebih dahulu."
+        );
+
+        return;
+      }
+
+
+      if (
+        email !== account.email ||
+        password !== account.password
+      ) {
+
+        showAuthMessage(
+          "Email atau password salah."
+        );
+
+        return;
+      }
+
+
+      localStorage.setItem(
+        "aksara_logged_in",
+        "true"
+      );
+
+
+      openDashboard();
+
+    }
+
+
+    function logoutAccount() {
+
+      localStorage.removeItem(
+        "aksara_logged_in"
+      );
+
+      document
+        .getElementById("appShell")
+        .classList.add("hidden");
+
+      document
+        .getElementById("authScreen")
+        .classList.remove("hidden");
+
+      showLogin();
+
+    }
+
+
+    function showAuthMessage(message) {
+
+      let box =
+        document.getElementById(
+          "authMessage"
+        );
+
+
+      if (!box) {
+
+        box =
+          document.createElement("div");
+
+        box.id = "authMessage";
+
+        box.className =
+          "auth-message";
+
+        const form =
+          document.querySelector(
+            ".auth-form:not(.hidden)"
+          );
+
+        if (form) {
+          form.prepend(box);
+        }
+
+      }
+
+
+      box.textContent = message;
+
+    }
+
+
+    function openDashboard() {
+
+      document
+        .getElementById("authScreen")
+        .classList.add("hidden");
+
+      document
+        .getElementById("appShell")
+        .classList.remove("hidden");
+
+
+      updateAccountUI();
+
+    }
+
+
+    function updateAccountUI() {
+
+      const account =
+        getAccount();
+
+      if (!account) {
+        return;
+      }
+
+
+      const name =
+        account.name || "Pengguna AKSARA";
+
+      const email =
+        account.email || "Akun dashboard";
+
+
+      const profileName =
+        document.getElementById(
+          "profileName"
+        );
+
+      const profileEmail =
+        document.getElementById(
+          "profileEmail"
+        );
+
+      const mobileUserName =
+        document.getElementById(
+          "mobileUserName"
+        );
+
+
+      if (profileName) {
+        profileName.textContent = name;
+      }
+
+      if (profileEmail) {
+        profileEmail.textContent = email;
+      }
+
+      if (mobileUserName) {
+        mobileUserName.textContent = name;
+      }
+
+    }
+
+
+    /* ==============================
+       MOBILE MENU
+       ============================== */
+
+    function openMobileMenu() {
+
+      const sidebar =
+        document.getElementById(
+          "sidebar"
+        );
+
+      const overlay =
+        document.getElementById(
+          "menuOverlay"
+        );
+
+
+      sidebar.classList.add("mobile-open");
+
+      overlay.classList.add("show");
+
+      document.body.classList.add(
+        "menu-open"
+      );
+
+    }
+
+
+    function closeMobileMenu() {
+
+      const sidebar =
+        document.getElementById(
+          "sidebar"
+        );
+
+      const overlay =
+        document.getElementById(
+          "menuOverlay"
+        );
+
+
+      sidebar.classList.remove(
+        "mobile-open"
+      );
+
+      overlay.classList.remove(
+        "show"
+      );
+
+      document.body.classList.remove(
+        "menu-open"
+      );
+
+    }
+
+
+    /* ==============================
+       STARTUP
+       ============================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        if (isLoggedIn() && getAccount()) {
+
+          openDashboard();
+
+        } else {
+
+          document
+            .getElementById("authScreen")
+            .classList.remove("hidden");
+
+          document
+            .getElementById("appShell")
+            .classList.add("hidden");
+
+        }
+
+      }
+    );
+
+  </script>
+
+
+  <!-- SCRIPT BOT LAMA -->
 
   <script src="script.js"></script>
+
+
 </body>
 </html>

@@ -806,3 +806,616 @@ body {
 
 }
 
+
+/* ======================================================
+   AKSARA-BOT — AUTH & APP MENU
+   ====================================================== */
+
+/* ===== HIDDEN ===== */
+
+.hidden {
+  display: none !important;
+}
+
+
+/* ===== AUTH SCREEN ===== */
+
+.auth-screen {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #241044 0%,
+      #10091f 45%,
+      #07050d 100%
+    );
+}
+
+
+.auth-card {
+  width: 100%;
+  max-width: 430px;
+
+  padding: 34px;
+
+  background: rgba(24, 17, 38, 0.96);
+
+  border: 1px solid #4b2670;
+  border-radius: 26px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.45),
+    0 10px 35px rgba(91, 33, 182, 0.2);
+}
+
+
+.auth-logo {
+  width: 64px;
+  height: 64px;
+
+  margin: 0 auto 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6d28d9,
+      #9333ea,
+      #a855f7
+    );
+
+  font-size: 30px;
+  font-weight: 900;
+
+  box-shadow:
+    0 12px 30px rgba(124, 58, 237, 0.35);
+}
+
+
+.auth-brand {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+
+.auth-brand h1 {
+  margin: 0;
+
+  font-size: 25px;
+  letter-spacing: 0.5px;
+}
+
+
+.auth-brand p {
+  margin: 7px 0 0;
+
+  color: #aaa0ba;
+  font-size: 14px;
+}
+
+
+.auth-heading {
+  margin-bottom: 22px;
+}
+
+
+.auth-heading h2 {
+  margin: 0 0 7px;
+  font-size: 22px;
+}
+
+
+.auth-heading p {
+  margin: 0;
+  color: #aaa0ba;
+  line-height: 1.5;
+}
+
+
+.auth-form .form-group {
+  margin-bottom: 17px;
+}
+
+
+.auth-form label {
+  display: block;
+  margin-bottom: 8px;
+
+  color: #ddd5e8;
+  font-weight: 700;
+}
+
+
+.auth-button {
+  width: 100%;
+  margin-top: 4px;
+}
+
+
+.auth-switch {
+  margin: 20px 0 0;
+
+  text-align: center;
+
+  color: #aaa0ba;
+  font-size: 14px;
+}
+
+
+.text-button {
+  width: auto !important;
+
+  padding: 0 !important;
+  margin: 0 0 0 4px;
+
+  background: transparent !important;
+  box-shadow: none !important;
+
+  color: #c084fc !important;
+
+  font-weight: 700;
+}
+
+
+.text-button:hover {
+  transform: none !important;
+  color: #e9d5ff !important;
+}
+
+
+.auth-message {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+
+  border-radius: 12px;
+
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+
+  color: #fca5a5;
+
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+
+/* ===== APP SHELL ===== */
+
+.app-shell {
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+/* ===== SIDEBAR HEADER ===== */
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+
+.mobile-close {
+  display: none;
+
+  width: 40px !important;
+  height: 40px;
+
+  padding: 0 !important;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  font-size: 28px;
+}
+
+
+/* ===== MENU LABEL ===== */
+
+.menu-label {
+  padding: 10px 14px 7px;
+
+  color: #817894;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+}
+
+
+.menu-label-space {
+  margin-top: 14px;
+}
+
+
+/* ===== MENU ICON ===== */
+
+.menu-icon {
+  width: 24px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  font-size: 18px;
+}
+
+
+/* ===== LOGOUT ===== */
+
+.logout-button {
+  width: 100% !important;
+
+  margin-top: 10px;
+
+  padding: 11px 14px !important;
+
+  background: rgba(255,255,255,0.05) !important;
+
+  border: 1px solid #392052 !important;
+
+  box-shadow: none !important;
+
+  color: #cfc2e8 !important;
+}
+
+
+.logout-button:hover {
+  background: rgba(124, 58, 237, 0.15) !important;
+
+  border-color: #6d28d9 !important;
+
+  transform: none !important;
+}
+
+
+/* ======================================================
+   MOBILE HEADER
+   ====================================================== */
+
+.mobile-topbar {
+  display: none;
+}
+
+
+/* ======================================================
+   MOBILE DRAWER
+   ====================================================== */
+
+.menu-overlay {
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+
+  /* ===== MOBILE APP ===== */
+
+  .app-shell {
+    min-height: 100vh;
+  }
+
+
+  /* ===== MOBILE HEADER ===== */
+
+  .mobile-topbar {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 16px;
+    padding: 12px 2px;
+  }
+
+
+  .mobile-brand {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+  }
+
+
+  .mobile-brand .brand-icon {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 13px;
+
+    font-size: 20px;
+  }
+
+
+  .mobile-brand strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 15px;
+  }
+
+
+  .mobile-brand small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #aaa0ba;
+    font-size: 12px;
+  }
+
+
+  .menu-button {
+    width: 46px !important;
+    height: 46px;
+
+    padding: 0 !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+    font-size: 22px;
+  }
+
+
+  /* ===== DRAWER ===== */
+
+  .sidebar {
+    position: fixed !important;
+
+    top: 0 !important;
+    left: 0 !important;
+
+    width: min(310px, 84vw) !important;
+    height: 100vh !important;
+
+    max-width: 310px !important;
+
+    padding: 20px 16px !important;
+
+    overflow-y: auto !important;
+
+    background: #10091d !important;
+
+    border-right: 1px solid #43206d !important;
+    border-bottom: none !important;
+
+    transform: translateX(-105%);
+
+    transition:
+      transform 0.25s ease;
+
+    z-index: 1001;
+  }
+
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+
+  .sidebar-header {
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid #392052;
+  }
+
+
+  .sidebar-header .brand {
+    margin-bottom: 0;
+  }
+
+
+  .mobile-close {
+    display: flex !important;
+  }
+
+
+  .sidebar .menu {
+    display: flex !important;
+
+    width: 100%;
+
+    margin-top: 18px;
+
+    gap: 5px;
+  }
+
+
+  .sidebar .menu-item {
+    width: 100% !important;
+
+    min-height: 48px;
+
+    padding: 12px 14px !important;
+
+    justify-content: flex-start;
+
+    text-align: left;
+  }
+
+
+  .sidebar-bottom {
+    margin-top: 20px !important;
+    padding-top: 16px;
+
+    border-top: 1px solid #392052;
+  }
+
+
+  /* ===== OVERLAY ===== */
+
+  .menu-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    display: block;
+
+    background: rgba(0, 0, 0, 0.62);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+      opacity 0.25s ease,
+      visibility 0.25s ease;
+
+    z-index: 1000;
+  }
+
+
+  .menu-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+
+  /* ===== CONTENT ===== */
+
+  .main-content {
+    width: 100% !important;
+
+    margin-left: 0 !important;
+
+    padding: 12px !important;
+  }
+
+
+  /* ===== TOPBAR ===== */
+
+  .topbar {
+    padding: 16px !important;
+
+    gap: 12px;
+  }
+
+
+  .topbar h2 {
+    font-size: 24px;
+  }
+
+
+  .topbar p {
+    line-height: 1.5;
+  }
+
+
+  /* ===== AUTH ===== */
+
+  .auth-screen {
+    padding: 16px;
+  }
+
+
+  .auth-card {
+    max-width: 100%;
+
+    padding: 25px 20px;
+
+    border-radius: 22px;
+  }
+
+
+  .auth-logo {
+    width: 58px;
+    height: 58px;
+
+    font-size: 27px;
+  }
+
+
+  .auth-brand {
+    margin-bottom: 25px;
+  }
+
+
+  .auth-brand h1 {
+    font-size: 22px;
+  }
+
+
+  /* ===== HERO ===== */
+
+  .hero-card {
+    padding: 20px !important;
+  }
+
+
+  /* ===== CARDS ===== */
+
+  .section-card,
+  .stat-card,
+  .feature-card {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+}
+
+
+@media (max-width: 420px) {
+
+  .auth-card {
+    padding: 22px 17px;
+  }
+
+
+  .mobile-topbar {
+    margin-bottom: 10px;
+  }
+
+
+  .mobile-brand strong {
+    font-size: 14px;
+  }
+
+
+  .menu-button {
+    width: 43px !important;
+    height: 43px;
+  }
+
+
+  .topbar h2 {
+    font-size: 22px;
+  }
+
+}
